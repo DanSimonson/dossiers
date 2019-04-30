@@ -13,7 +13,7 @@ export class Profiles extends Component {
       documents: [],
       loaded: false,
       change: false,
-      //open: false,
+      openHeader: true,
       docsID: '',
       identifier: ''
     }
@@ -88,6 +88,15 @@ export class Profiles extends Component {
     console.log(this.state.loaded)
     return (
       <div>
+        {this.state.openHeader &&
+          <div className="header">           
+            {/*<div className="head">
+              <h1>Marvel Avengers</h1>
+              <p>Intelligence Dossiers</p>
+        </div>*/}
+          </div>
+
+        }
         {this.state.loaded && !this.state.change ?
           this.state.documents.map((document, index) =>
             <div id="content">
