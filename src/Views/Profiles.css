@@ -112,10 +112,6 @@
   color: white;
   text-shadow: 2px 2px #FF0000;
   font-size: 30px;
-  /*background: url(https://firebasestorage.googleapis.com/v0/b/all-purpose-238011.appspot.com/o/images%2Favengers.jpg?alt=media&token=878e3533-5ef8-43f6-afe0-2a69cb15d190);
-  background-position: cover;
-  background-repeat: no-repeat;*/
-
 }
 #content{  
   display: grid;
@@ -133,7 +129,6 @@
 }
 .one{
   justify-content: center;
-
 }
 .two{
   flex-direction: column;
@@ -153,6 +148,12 @@ h3, h2{
 /*media queries*/
 /**everything over*/
 @media (min-width: 768px) {
+  .header{
+    background: url(https://firebasestorage.googleapis.com/v0/b/all-purpose-238011.appspot.com/o/images%2Favengers2.jpg?alt=media&token=54690b27-d2e4-4436-b03e-33351f29d9c6);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
   #content{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -160,9 +161,7 @@ h3, h2{
     grid-gap: 10px;
 		max-width: 960px;
 		margin: 0 auto;
-    border: 5px solid orange;
-
-    
+    border: 5px solid orange;    
   }
   .one{
     border:5px solid brown;
@@ -174,13 +173,10 @@ h3, h2{
     border: 5px solid red;
     align-items: center;
     grid-column:3/7;
-    margin-left: 2px;
-    
-        
+    margin-left: 2px;        
   }  
-}
- 
 
+}
 
 
 
