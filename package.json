@@ -12,8 +12,7 @@
     "react-pose": "^4.0.8",
     "react-pose-text": "^3.1.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
-    "react-sticky-footer": "0.1.0-rc3"
+    "react-scripts": "3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

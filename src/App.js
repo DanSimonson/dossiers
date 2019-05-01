@@ -7,6 +7,7 @@ import Profiles from './Views/Profiles';
 //import { color } from 'style-value-types';
 import Dashboard from './Views/Dashboard';
 
+
 function App() {
   return (
     <div className="App">

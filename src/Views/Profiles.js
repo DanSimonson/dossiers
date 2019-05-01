@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Profiles.css'
-import { Image } from 'react-bootstrap'
+//import Footer from '../Components/Footer/Footer'
+//import { Image } from 'react-bootstrap'
 import charPoses from '../Components/CharPoses/charPoses'
 import SplitText from 'react-pose-text';
 import firebase from 'firebase';
@@ -18,7 +19,8 @@ export class Profiles extends Component {
       docsID: '',
       identifier: '',
       url: '',
-      isVisible: false
+      isVisible: false,
+      seeFooter: false,
     }
   }
   componentDidMount() {
@@ -36,6 +38,14 @@ export class Profiles extends Component {
       })
       this.gotData(docData)
     });
+
+    setTimeout(() => {
+      this.setState({
+        seeFooter: !this.state.seeFooter
+      }, () => {
+        console.log('seeFooter: ', this.state.seeFooter)
+      });
+    }, 2000);
   }
 
   gotData = (docData) => {
@@ -43,7 +53,7 @@ export class Profiles extends Component {
       this.setState({ loaded: true })
     })
   }
-  
+
   changeView = (file) => {
     console.log('doc: ', file.url2)
     let documents = this.state.documents
@@ -51,14 +61,15 @@ export class Profiles extends Component {
     let i;
     window.scrollTo(0, 0);
     //toggle view
-    setTimeout(() => {this.setState({ isVisible: !this.state.isVisible })}, 2000)
+    setTimeout(() => { this.setState({ isVisible: !this.state.isVisible }) }, 2000)
 
     this.setState({
       openHeader: !this.state.openHeader,
       change: !this.state.change,
+      seeFooter: !this.state.seeFooter,
       docsID: file.id.seconds,
       url: file.url2
-    }, () => {     
+    }, () => {
       switch (this.state.docsID) {
         case 1555677208:
           this.setState({
@@ -95,7 +106,8 @@ export class Profiles extends Component {
     this.setState({
       change: !this.state.change,
       openHeader: !this.state.openHeader,
-      isVisible: !this.state.isVisible
+      isVisible: !this.state.isVisible,
+      seeFooter: !this.state.seeFooter
     })
   }
   render() {
@@ -132,76 +144,88 @@ export class Profiles extends Component {
         {this.state.change &&
           <div>
             {this.state.identifier === 'iron man' &&
-              <div> 
-              <div className='my-url'>
-                <img src={this.state.url} />
-              </div>
-              {this.state.isVisible && <div className="container">
-                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                  Tony Stark is a genius inventor capable of conceiving and building scientific advancements far ahead of cutting edge technology. His Iron Man suit has impenetrable armor protection with refined flight capability. The reactor powers both his pacemaker and the metal alloy suit. His weapons include energy beam repulsors and smart missiles
+              <div>
+                <div className='my-url'>
+                  <img src={this.state.url} />
+                </div>
+                {this.state.isVisible && <div className="container">
+                  <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                    Tony Stark is a genius inventor capable of conceiving and building scientific advancements far ahead of cutting edge technology. His Iron Man suit has impenetrable armor protection with refined flight capability. The reactor powers both his pacemaker and the metal alloy suit. His weapons include energy beam repulsors and smart missiles
                 </SplitText>
-              </div>}              
+                </div>}
               </div>
             }
             {this.state.identifier === 'captain america' &&
-              <div> 
-              <div className='my-url'>
-                <img src={this.state.url} />
-              </div>
-              {this.state.isVisible && <div className="container">
-                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                  Captain America is a superior soldier. Due to Super Soldier Serum, Roger's is the first enhanced human being - body and mind. All physical attributes as well as cognitive abilities have been heightened to peak efficiency. He can self-heal. All these attributes along with his proficiency in most martial arts and his uniquely designed shield makes him one of earth's finest human combatants.
+              <div>
+                <div className='my-url'>
+                  <img src={this.state.url} />
+                </div>
+                {this.state.isVisible && <div className="container">
+                  <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                    Captain America is a superior soldier. Due to Super Soldier Serum, Roger's is the first enhanced human being - body and mind. All physical attributes as well as cognitive abilities have been heightened to peak efficiency. He can self-heal. All these attributes along with his proficiency in most martial arts and his uniquely designed shield makes him one of earth's finest human combatants.
                 </SplitText>
-              </div>
-              }
+                </div>
+                }
               </div>
             }
             {this.state.identifier === 'black widow' &&
-              <div> 
-              <div className='my-url'>
-                <img src={this.state.url} />
-              </div>
-              {this.state.isVisible && <div className="container">
-                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                  Black Widow is highly trained in various martial arts. An expert acrobat, Olympic class gymnast, athlete and aerialist, excelling at marksmanship and knife throwing as well as being a master interrogator and tactician. Talented hacker, seductress and assassin. she has mastered skills in espionage infiltration, disguise and demolition.
+              <div>
+                <div className='my-url'>
+                  <img src={this.state.url} />
+                </div>
+                {this.state.isVisible && <div className="container">
+                  <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                    Black Widow is highly trained in various martial arts. An expert acrobat, Olympic class gymnast, athlete and aerialist, excelling at marksmanship and knife throwing as well as being a master interrogator and tactician. Talented hacker, seductress and assassin. she has mastered skills in espionage infiltration, disguise and demolition.
                 </SplitText>
-              </div>
-              }
+                </div>
+                }
               </div>
             }
             {this.state.identifier === 'hulk' &&
-              <div> 
-              <div className='my-url'>
-                <img src={this.state.url} />
-              </div>
-              {this.state.isVisible && <div className="container">
-                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                  When Bruce Banner becomes the Hulk, he is an unstoppable beast of near unlimited strength, power, and destruction. He is able to leap great distances and is incredibly fast and can run great distances at extreme speeds. He generally travels by jumping. The hulk is nearly impervious to most forms of damage. when the Hulk is damaged, he heals quickly.
+              <div>
+                <div className='my-url'>
+                  <img src={this.state.url} />
+                </div>
+                {this.state.isVisible && <div className="container">
+                  <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                    When Bruce Banner becomes the Hulk, he is an unstoppable beast of near unlimited strength, power, and destruction. He is able to leap great distances and is incredibly fast and can run great distances at extreme speeds. He generally travels by jumping. The hulk is nearly impervious to most forms of damage. when the Hulk is damaged, he heals quickly.
                 </SplitText>
-              </div>
-              }
+                </div>
+                }
               </div>
             }
             {this.state.identifier === 'thor' &&
-              <div> 
-              <div className='my-url'>
-                <img src={this.state.url} />
-              </div>
-              {this.state.isVisible && <div className="container">
-                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                  Thor has superhuman strength, speed, and endurance. He Wields the enchanted Uru-forged hammer Mjolnir, which grants mastery over the elements of thunder and lightning, as well as the ability to fly and open interdimensional gateways. He possesses superhuman healing in addition to his near invulnerability to injury.
+              <div>
+                <div className='my-url'>
+                  <img src={this.state.url} />
+                </div>
+                {this.state.isVisible && <div className="container">
+                  <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                    Thor has superhuman strength, speed, and endurance. He Wields the enchanted Uru-forged hammer Mjolnir, which grants mastery over the elements of thunder and lightning, as well as the ability to fly and open interdimensional gateways. He possesses superhuman healing in addition to his near invulnerability to injury.
                 </SplitText>
-              </div>
-              }
+                </div>
+                }
               </div>
             }
             {this.state.isVisible && <div className='button-wrapper'>
+            <div className='foot'>
+            <footer>
+              <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
+            </footer>
+            </div>
               <button onClick={this.toggle} className="butnn">Return To Dossiers</button>
-              </div>
+            </div>
             }
-             
+
           </div>
-           
+        }
+        {this.state.seeFooter &&
+          <div className='foot'>
+            <footer>
+              <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
+            </footer>
+          </div>
+
         }
       </div>
     )
