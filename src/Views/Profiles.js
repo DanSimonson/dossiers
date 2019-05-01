@@ -150,7 +150,7 @@ export class Profiles extends Component {
               </div>
               {this.state.isVisible && <div className="container">
                 <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                  Captain America is a superior soldier. Due to Super Soldier Serum, Roger's is the first enhanced human being - body and mind. All physical attributes as well as cognitive abilities have been heightened to peak efficiency. He can self-heal. All thes attributes along with his proficiency in most martial arts and his uniquely designed shield makes him one of earth's finest human combatants.
+                  Captain America is a superior soldier. Due to Super Soldier Serum, Roger's is the first enhanced human being - body and mind. All physical attributes as well as cognitive abilities have been heightened to peak efficiency. He can self-heal. All these attributes along with his proficiency in most martial arts and his uniquely designed shield makes him one of earth's finest human combatants.
                 </SplitText>
               </div>
               }
