@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Profiles.css'
+import { Image } from 'react-bootstrap'
 import charPoses from '../Components/CharPoses/charPoses'
 import SplitText from 'react-pose-text';
 import firebase from 'firebase';
@@ -15,7 +16,9 @@ export class Profiles extends Component {
       change: false,
       openHeader: true,
       docsID: '',
-      identifier: ''
+      identifier: '',
+      url: '',
+      isVisible: false
     }
   }
   componentDidMount() {
@@ -40,16 +43,22 @@ export class Profiles extends Component {
       this.setState({ loaded: true })
     })
   }
-  changeView = (id) => {
+  
+  changeView = (file) => {
+    console.log('doc: ', file.url2)
     let documents = this.state.documents
     let doc = [];
     let i;
     window.scrollTo(0, 0);
     //toggle view
+    setTimeout(() => {this.setState({ isVisible: !this.state.isVisible })}, 2000)
+
     this.setState({
+      openHeader: !this.state.openHeader,
       change: !this.state.change,
-      docsID: id
-    }, () => {
+      docsID: file.id.seconds,
+      url: file.url2
+    }, () => {     
       switch (this.state.docsID) {
         case 1555677208:
           this.setState({
@@ -81,21 +90,19 @@ export class Profiles extends Component {
       }
     })
   }
+
   toggle = () => {
-    this.setState({ change: !this.state.change })
+    this.setState({
+      change: !this.state.change,
+      openHeader: !this.state.openHeader,
+      isVisible: !this.state.isVisible
+    })
   }
   render() {
-    console.log(this.state.loaded)
     return (
       <div>
         {this.state.openHeader &&
-          <div className="header">           
-            {/*<div className="head">
-              <h1>Marvel Avengers</h1>
-              <p>Intelligence Dossiers</p>
-        </div>*/}
-          </div>
-
+          <div className="header"></div>
         }
         {this.state.loaded && !this.state.change ?
           this.state.documents.map((document, index) =>
@@ -116,15 +123,88 @@ export class Profiles extends Component {
                 <p>
                   <span>Citizenship: {document.citizenship}</span>
                 </p>
-                <button onClick={() => this.changeView(document.id.seconds)} className="butn">Intelligence Dossier: Top Secret Clearance Required</button>
+                {/**onClick={() => this.changeView(document)} */}
+                <button onClick={() => this.changeView(document)} className="butn">Intelligence Dossier: Top Secret Clearance Required</button>
               </div>
             </div>
           ) : null
         }
+        {this.state.change &&
+          <div>
+            {this.state.identifier === 'iron man' &&
+              <div> 
+              <div className='my-url'>
+                <img src={this.state.url} />
+              </div>
+              {this.state.isVisible && <div className="container">
+                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                  Tony Stark is a genius inventor capable of conceiving and building scientific advancements far ahead of cutting edge technology. His Iron Man suit has impenetrable armor protection with refined flight capability. The reactor powers both his pacemaker and the metal alloy suit. His weapons include energy beam repulsors and smart missiles
+                </SplitText>
+              </div>}              
+              </div>
+            }
+            {this.state.identifier === 'captain america' &&
+              <div> 
+              <div className='my-url'>
+                <img src={this.state.url} />
+              </div>
+              {this.state.isVisible && <div className="container">
+                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                  Captain America is a superior soldier. Due to Super Soldier Serum, Roger's is the first enhanced human being - body and mind. All physical attributes as well as cognitive abilities have been heightened to peak efficiency. He can self-heal. All thes attributes along with his proficiency in most martial arts and his uniquely designed shield makes him one of earth's finest human combatants.
+                </SplitText>
+              </div>
+              }
+              </div>
+            }
+            {this.state.identifier === 'black widow' &&
+              <div> 
+              <div className='my-url'>
+                <img src={this.state.url} />
+              </div>
+              {this.state.isVisible && <div className="container">
+                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                  Black Widow is highly trained in various martial arts. An expert acrobat, Olympic class gymnast, athlete and aerialist, excelling at marksmanship and knife throwing as well as being a master interrogator and tactician. Talented hacker, seductress and assassin. she has mastered skills in espionage infiltration, disguise and demolition.
+                </SplitText>
+              </div>
+              }
+              </div>
+            }
+            {this.state.identifier === 'hulk' &&
+              <div> 
+              <div className='my-url'>
+                <img src={this.state.url} />
+              </div>
+              {this.state.isVisible && <div className="container">
+                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                  When Bruce Banner becomes the Hulk, he is an unstoppable beast of near unlimited strength, power, and destruction. He is able to leap great distances and is incredibly fast and can run great distances at extreme speeds. He generally travels by jumping. The hulk is nearly impervious to most forms of damage. when the Hulk is damaged, he heals quickly.
+                </SplitText>
+              </div>
+              }
+              </div>
+            }
+            {this.state.identifier === 'thor' &&
+              <div> 
+              <div className='my-url'>
+                <img src={this.state.url} />
+              </div>
+              {this.state.isVisible && <div className="container">
+                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
+                  Thor has superhuman strength, speed, and endurance. He Wields the enchanted Uru-forged hammer Mjolnir, which grants mastery over the elements of thunder and lightning, as well as the ability to fly and open interdimensional gateways. He possesses superhuman healing in addition to his near invulnerability to injury.
+                </SplitText>
+              </div>
+              }
+              </div>
+            }
+            {this.state.isVisible && <div className='button-wrapper'>
+              <button onClick={this.toggle} className="butnn">Return To Dossiers</button>
+              </div>
+            }
+             
+          </div>
+           
+        }
       </div>
     )
-
   }
-
 }
 export default Profiles
