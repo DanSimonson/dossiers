@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/dossiers/static/css/main.4c089c31.chunk.css",
+    "main.js": "/dossiers/static/js/main.fcf2ac01.chunk.js",
+    "main.js.map": "/dossiers/static/js/main.fcf2ac01.chunk.js.map",
+    "runtime~main.js": "/dossiers/static/js/runtime~main.06b162d8.js",
+    "runtime~main.js.map": "/dossiers/static/js/runtime~main.06b162d8.js.map",
+    "static/css/2.22a7d4ef.chunk.css": "/dossiers/static/css/2.22a7d4ef.chunk.css",
+    "static/js/2.7630e0db.chunk.js": "/dossiers/static/js/2.7630e0db.chunk.js",
+    "static/js/2.7630e0db.chunk.js.map": "/dossiers/static/js/2.7630e0db.chunk.js.map",
+    "index.html": "/dossiers/index.html",
+    "precache-manifest.6692459f7cd12cfda8bf1bc579415e00.js": "/dossiers/precache-manifest.6692459f7cd12cfda8bf1bc579415e00.js",
+    "service-worker.js": "/dossiers/service-worker.js",
+    "static/css/2.22a7d4ef.chunk.css.map": "/dossiers/static/css/2.22a7d4ef.chunk.css.map",
+    "static/css/main.4c089c31.chunk.css.map": "/dossiers/static/css/main.4c089c31.chunk.css.map"
+  }
+}
