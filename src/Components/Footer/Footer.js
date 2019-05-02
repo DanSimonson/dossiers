@@ -26,32 +26,15 @@ export class Footer extends Component {
       isVisible: false
     }
   }
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isVisible: !this.state.isVisible
-      });
-    }, 2000);
-  }
+ 
   
   render(){
-    const { isVisible } = this.state;
-    return (
-      
-      <div className='foot'>
-        {isVisible && 
-         <div>        
+    return (      
+      <div className='foot'>               
          <footer>
          <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
          </footer>
-         </div>
-          
-        }
-        </div>
-        
-        
-             
-         
+        </div>         
       )
   }  
 }

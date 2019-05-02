@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Profiles.css'
-//import Footer from '../Components/Footer/Footer'
+import Footer from '../Components/Footer/Footer'
 //import { Image } from 'react-bootstrap'
 import charPoses from '../Components/CharPoses/charPoses'
 import SplitText from 'react-pose-text';
@@ -206,29 +206,33 @@ export class Profiles extends Component {
                 </div>
                 }
               </div>
-            }
+            } 
             {this.state.isVisible && <div className='button-wrapper'>
-            <div className='foot'>
-            <footer>
-              <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
-            </footer>
-            </div>
+              <div> 
               <button onClick={this.toggle} className="butnn">Return To Dossiers</button>
             </div>
+              <div className='wrap-foot'>
+                <div className='foot'>
+                  <footer>
+                    <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
+                  </footer>
+                </div>
+              </div>
+              </div>
             }
-
           </div>
         }
         {this.state.seeFooter &&
-          <div className='foot'>
-            <footer>
-              <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
-            </footer>
-          </div>
+          <Footer />
 
         }
       </div>
     )
   }
 }
+/*<div className='foot'>
+            <footer>
+              <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
+            </footer>
+           </div>*/
 export default Profiles
