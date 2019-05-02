@@ -114,7 +114,12 @@ export class Profiles extends Component {
     return (
       <div>
         {this.state.openHeader &&
-          <div className="header"></div>
+          <div className="header">
+            <div className='title'>
+              <p>Marvel's Avengers </p>   
+            </div>
+
+          </div>
         }
         {this.state.loaded && !this.state.change ?
           this.state.documents.map((document, index) =>
@@ -206,11 +211,11 @@ export class Profiles extends Component {
                 </div>
                 }
               </div>
-            } 
+            }
             {this.state.isVisible && <div className='button-wrapper'>
-              <div> 
-              <button onClick={this.toggle} className="butnn">Return To Dossiers</button>
-            </div>
+              <div>
+                <button onClick={this.toggle} className="butnn">Return To Dossiers</button>
+              </div>
               <div className='wrap-foot'>
                 <div className='foot'>
                   <footer>
@@ -218,7 +223,7 @@ export class Profiles extends Component {
                   </footer>
                 </div>
               </div>
-              </div>
+            </div>
             }
           </div>
         }
