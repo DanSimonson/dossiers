@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import './Profiles.css'
 import Footer from '../Components/Footer/Footer'
-//import { Image } from 'react-bootstrap'
+import styled, { keyframes } from "styled-components";
+import { fade } from "react-animations";
 import charPoses from '../Components/CharPoses/charPoses'
 import SplitText from 'react-pose-text';
+import { CSSTransitionGroup, transitionAppear, transitionEnter, transitionLeave, transitionName, TransitionGroup, CSSTransition } from 'react-transition-group'
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 import firebase from 'firebase';
 import { firebaseApp } from '../FirebaseConfig'
 const db = firebaseApp.firestore()
+
+const Bounce = styled.div`animation: .5s ${keyframes`${fade}`} .5s`;
 export class Profiles extends Component {
   constructor(props) {
     super(props)
@@ -113,19 +119,20 @@ export class Profiles extends Component {
   render() {
     return (
       <div>
-        {this.state.openHeader &&
+        {this.state.openHeader &&          
           <div className="header">
             <div className='title'>
               <p>Marvel's Avengers </p>   
             </div>
-
-          </div>
+          </div>         
         }
         {this.state.loaded && !this.state.change ?
           this.state.documents.map((document, index) =>
-            <div id="content">
+            <div key={index} id="content">
               <div className='one'>
-                <img src={document.url} />
+              <Zoom  delay={500}> 
+               <img src={document.url} />
+               </Zoom>
               </div>
               <div className='two'>
                 <p>
@@ -151,8 +158,11 @@ export class Profiles extends Component {
             {this.state.identifier === 'iron man' &&
               <div>
                 <div className='my-url'>
-                  <img src={this.state.url} />
+                <Fade  delay={300} duration={3000}>
+                  <Bounce><img src={this.state.url}/></Bounce>
+                  </Fade>
                 </div>
+
                 {this.state.isVisible && <div className="container">
                   <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
                     Tony Stark is a genius inventor capable of conceiving and building scientific advancements far ahead of cutting edge technology. His Iron Man suit has impenetrable armor protection with refined flight capability. The reactor powers both his pacemaker and the metal alloy suit. His weapons include energy beam repulsors and smart missiles
@@ -163,7 +173,9 @@ export class Profiles extends Component {
             {this.state.identifier === 'captain america' &&
               <div>
                 <div className='my-url'>
-                  <img src={this.state.url} />
+                <Fade  delay={300} duration={3000}>
+                  <Bounce><img src={this.state.url}/></Bounce>
+                  </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
                   <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
@@ -176,7 +188,9 @@ export class Profiles extends Component {
             {this.state.identifier === 'black widow' &&
               <div>
                 <div className='my-url'>
-                  <img src={this.state.url} />
+                <Fade  delay={300} duration={3000}>
+                  <Bounce><img src={this.state.url}/></Bounce>
+                  </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
                   <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
@@ -189,7 +203,9 @@ export class Profiles extends Component {
             {this.state.identifier === 'hulk' &&
               <div>
                 <div className='my-url'>
-                  <img src={this.state.url} />
+                <Fade  delay={300} duration={3000}>
+                  <Bounce><img src={this.state.url}/></Bounce>
+                  </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
                   <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
@@ -202,7 +218,9 @@ export class Profiles extends Component {
             {this.state.identifier === 'thor' &&
               <div>
                 <div className='my-url'>
-                  <img src={this.state.url} />
+                <Fade  delay={300} duration={3000}>
+                  <Bounce><img src={this.state.url}/></Bounce>
+                  </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
                   <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>

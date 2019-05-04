@@ -25,8 +25,7 @@ export class Footer extends Component {
     this.state = {
       isVisible: false
     }
-  }
- 
+  } 
   
   render(){
     return (      
