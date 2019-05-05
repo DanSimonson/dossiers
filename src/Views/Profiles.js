@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import './Profiles.css'
 import Footer from '../Components/Footer/Footer'
+import { Link } from 'react-router-dom'
 import styled, { keyframes } from "styled-components";
-import { fade } from "react-animations";
+import { fadeIn } from "react-animations";
 import charPoses from '../Components/CharPoses/charPoses'
 import SplitText from 'react-pose-text';
 import { CSSTransitionGroup, transitionAppear, transitionEnter, transitionLeave, transitionName, TransitionGroup, CSSTransition } from 'react-transition-group'
@@ -12,7 +13,7 @@ import firebase from 'firebase';
 import { firebaseApp } from '../FirebaseConfig'
 const db = firebaseApp.firestore()
 
-const Bounce = styled.div`animation: .5s ${keyframes`${fade}`} .5s`;
+const Bounce = styled.div`animation: .5s ${keyframes`${fadeIn}`} .5s`;
 export class Profiles extends Component {
   constructor(props) {
     super(props)
@@ -119,20 +120,20 @@ export class Profiles extends Component {
   render() {
     return (
       <div>
-        {this.state.openHeader &&          
+        {this.state.openHeader &&
           <div className="header">
             <div className='title'>
-              <p>Marvel's Avengers </p>   
+              <p>Marvel's Avengers </p>
             </div>
-          </div>         
+          </div>
         }
         {this.state.loaded && !this.state.change ?
           this.state.documents.map((document, index) =>
             <div key={index} id="content">
               <div className='one'>
-              <Zoom  delay={500}> 
-               <img src={document.url} />
-               </Zoom>
+                <Zoom delay={500}>
+                  <img src={document.url} />
+                </Zoom>
               </div>
               <div className='two'>
                 <p>
@@ -158,8 +159,8 @@ export class Profiles extends Component {
             {this.state.identifier === 'iron man' &&
               <div>
                 <div className='my-url'>
-                <Fade  delay={300} duration={3000}>
-                  <Bounce><img src={this.state.url}/></Bounce>
+                  <Fade delay={300} duration={3000}>
+                    <Bounce><img src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
 
@@ -173,8 +174,8 @@ export class Profiles extends Component {
             {this.state.identifier === 'captain america' &&
               <div>
                 <div className='my-url'>
-                <Fade  delay={300} duration={3000}>
-                  <Bounce><img src={this.state.url}/></Bounce>
+                  <Fade delay={300} duration={3000}>
+                    <Bounce><img src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -188,8 +189,8 @@ export class Profiles extends Component {
             {this.state.identifier === 'black widow' &&
               <div>
                 <div className='my-url'>
-                <Fade  delay={300} duration={3000}>
-                  <Bounce><img src={this.state.url}/></Bounce>
+                  <Fade delay={300} duration={3000}>
+                    <Bounce><img src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -203,8 +204,8 @@ export class Profiles extends Component {
             {this.state.identifier === 'hulk' &&
               <div>
                 <div className='my-url'>
-                <Fade  delay={300} duration={3000}>
-                  <Bounce><img src={this.state.url}/></Bounce>
+                  <Fade delay={300} duration={3000}>
+                    <Bounce><img src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -218,8 +219,8 @@ export class Profiles extends Component {
             {this.state.identifier === 'thor' &&
               <div>
                 <div className='my-url'>
-                <Fade  delay={300} duration={3000}>
-                  <Bounce><img src={this.state.url}/></Bounce>
+                  <Fade delay={300} duration={3000}>
+                    <Bounce><img src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -232,6 +233,9 @@ export class Profiles extends Component {
             }
             {this.state.isVisible && <div className='button-wrapper'>
               <div>
+                <Link to='/dashboard'>
+                  <a style={{color:'#fff'}} class="myButton">Avenger's Match Game</a>
+                </Link>
                 <button onClick={this.toggle} className="butnn">Return To Dossiers</button>
               </div>
               <div className='wrap-foot'>
