@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Dashboard.css'
 import ReactCardFlip from 'react-card-flip';
 import img1 from '../img1.jpg'
+import butterfly from '../butterfly.jpg'
 
 export class Dashboard extends Component {
   constructor(props) {
@@ -15,22 +16,16 @@ export class Dashboard extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
   render() {
-    return (
+    return (      
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-        <div className='front' key="front">
-          This is the front of the card.
-          <img            
-            src="//static.pexels.com/photos/59523/pexels-photo-59523.jpeg"
-          />
-          <button onClick={this.handleClick}>Click to flip</button>
+       
+        <div className='example-section front' key="front">
+          <img onClick={this.handleClick} src={butterfly} />
         </div>
+       
 
-        <div classname='back' key="back">
-          This is the back of the card.
-          <img            
-            src={img1}
-          />
-          <button onClick={this.handleClick}>Click to flip</button>
+        <div className='example-section back' key="back">
+          <img onClick={this.handleClick} src={butterfly}/>
         </div>
       </ReactCardFlip>
     )
