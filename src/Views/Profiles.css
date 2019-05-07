@@ -111,7 +111,7 @@
 
 .title {
     position: absolute;
-    top: 10%;
+    top: 3%;
     left: 50%;
     transform: translate(-50%, -50%);
     
@@ -159,7 +159,7 @@
   justify-content: center;
   margin-top:1rem;
 }
-img{
+.img-style{
   max-width:100%;
   border-radius: 50%;
 }

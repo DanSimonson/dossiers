@@ -1,17 +1,23 @@
-
-*{
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
-	font-family: lato;
+* {
+  box-sizing: border-box;
 }
-.container {
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 720px;
-	padding: 1em;
+html,
+body {
+  position: relative;
 }
-.example-section {
-	height: 285px;
-	width: 600px;
+.root {
+	display: "block";
+	margin: "40px";
+	position: "relative";
+}
+.card {
+	border: "1px solid #ccc";
+	border-radius: "8px";
+	padding: "10px"; 
+	background-color: "#111"/*"#bada55";*/
+}
+.card-image{
+	border-radius: 2px;
+	width: 350px;
+	height: 400px;
 }

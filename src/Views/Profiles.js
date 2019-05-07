@@ -132,7 +132,7 @@ export class Profiles extends Component {
             <div key={index} id="content">
               <div className='one'>
                 <Zoom delay={500}>
-                  <img src={document.url} />
+                  <img className='img-style' src={document.url} />
                 </Zoom>
               </div>
               <div className='two'>
@@ -160,7 +160,7 @@ export class Profiles extends Component {
               <div>
                 <div className='my-url'>
                   <Fade delay={300} duration={3000}>
-                    <Bounce><img src={this.state.url} /></Bounce>
+                    <Bounce><img className='img-style' src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
 
@@ -175,7 +175,7 @@ export class Profiles extends Component {
               <div>
                 <div className='my-url'>
                   <Fade delay={300} duration={3000}>
-                    <Bounce><img src={this.state.url} /></Bounce>
+                    <Bounce><img className='img-style' src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -190,7 +190,7 @@ export class Profiles extends Component {
               <div>
                 <div className='my-url'>
                   <Fade delay={300} duration={3000}>
-                    <Bounce><img src={this.state.url} /></Bounce>
+                    <Bounce><img className='img-style' src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -205,7 +205,7 @@ export class Profiles extends Component {
               <div>
                 <div className='my-url'>
                   <Fade delay={300} duration={3000}>
-                    <Bounce><img src={this.state.url} /></Bounce>
+                    <Bounce><img className='img-style' src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
@@ -220,7 +220,7 @@ export class Profiles extends Component {
               <div>
                 <div className='my-url'>
                   <Fade delay={300} duration={3000}>
-                    <Bounce><img src={this.state.url} /></Bounce>
+                    <Bounce><img  className='img-style' src={this.state.url} /></Bounce>
                   </Fade>
                 </div>
                 {this.state.isVisible && <div className="container">
