@@ -1,23 +1,29 @@
 * {
   box-sizing: border-box;
 }
-html,
-body {
-  position: relative;
+.grid-container{
+	width: 35vw;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.root {
-	display: "block";
-	margin: "40px";
-	position: "relative";
-}
-.card {
+.cards{
 	border: "1px solid #ccc";
 	border-radius: "8px";
 	padding: "10px"; 
-	background-color: "#111"/*"#bada55";*/
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	
 }
+
 .card-image{
 	border-radius: 2px;
-	width: 350px;
-	height: 400px;
+	width: 100px;
+	height: 150px;
+}
+/*media queries*/
+/**everything over*/
+@media (max-width: 768px) {
 }
