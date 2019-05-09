@@ -18,6 +18,8 @@ export class Dashboard extends Component {
       //name: [],
       //target: []
     }
+    this.timer = null
+    //this.timer = setTimeout(() => this.resetCards(currentTiles, currentScore), 3000);
   }
 
   componentDidMount() {
@@ -47,66 +49,67 @@ export class Dashboard extends Component {
   }
 
   handleFrontClick = (evt) => {
-    let myId;    
+    let myId;
     let i;
-    for(i=0; i<= this.state.Avengers.length -1;i++){
-      if(this.state.Avengers[i].id === parseInt(evt.target.id)){
-        console.log('found name: ', this.state.Avengers[i].name)
-        console.log('found id: ', this.state.Avengers[i].id)
+    for (i = 0; i <= this.state.Avengers.length - 1; i++) {
+      if (this.state.Avengers[i].id === parseInt(evt.target.id)) {
+        //console.log('found name: ', this.state.Avengers[i].name)
+        //console.log('found id: ', this.state.Avengers[i].id)
         myId = this.state.Avengers[i].id
-        this.setState(prevState => ({
-          id: [...prevState.id, myId ],
-          count: prevState.count + 1 
-        }), () => {
-          if(this.state.id.length >1){
-            console.log('id array to compare: ', this.state.id[0])
-            console.log('id array to compare: ', this.state.id[1])
-            if(this.state.id[0] === this.state.id[1]){
-              console.log('match found')
-            }else{
-              console.log ('no match found')
-            }
-
-
-          }
-          
+      }
+    }//end for loop
+    this.setState(prevState => ({
+      id: [...prevState.id, myId],
+      count: prevState.count + 1
+    }), () => {
+      //console.log('callback click count: ', this.state.count)
+      //console.log('callback click id array: ', this.state.id)
+      /*if(this.state.count=== 2){
+        document.getElementById(this.state.id[0]).click();
+        document.getElementById(this.state.id[1]).click();
+        this.setState({
+          id: [],
+          count: 0
         })
-      }   
-   }
-  
-  
- }
+
+      }else if(this.state.count > 2){
+       this.setState({
+          id: [],
+          count: 0
+        })
+
+      }*/
+      //let myVar = setTimeout(this.remoteFrontClick, 3000)
+
+
+    })
+    let myVar = setTimeout(() => this.remoteFrontClick(), 3000)
+  }
+
 
   remoteFrontClick = () => {
-    console.log('check count in remote click: ', this.state.count)
-    console.log('id array in remote click: ', this.state.id)
-    /*if(this.state.count > 2){
-      return;
-    }else{ 
-      document.getElementById(this.state.target[0]).click();
-      document.getElementById(this.state.target[1]).click();
-      this.setState({
-        count: 0,
-      }, () => {
+    let firstId = this.state.id[0]
+    let secondId = this.state.id[1]
+    
+    if (this.state.count === 2) {
+
+      if (this.state.id[0] === this.state.id[1]) {
+        console.log('state id array: ', this.state.id)
+        console.log('count: ', this.state.count)
+        console.log('match found')
+      } else {
+        document.getElementById(this.state.id[0]).click();
+        document.getElementById(this.state.id[1]).click();
         this.setState({
-         
-         })
-      })
-
+          id: [],
+          count: 0
+        })
+      }
+    } else {
+      //console.log('here')
     }
-   
-
-    /*document.getElementById(this.state.target[0]).click();
-    document.getElementById(this.state.target[1]).click();
-    this.setState({
-      count: 0,
-    }, () => {
-      this.setState({
-        target: [],
-        tempArray: []
-       })
-    })*/
   }
+
   render() {
     let cardsArray = [];
     const { Avengers } = this.state
