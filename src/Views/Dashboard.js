@@ -5,39 +5,27 @@ import ReactCardFlipper from "react-card-flipper";
 import img1 from '../img1.jpg'
 import butterfly from '../Images/butterfly.jpg'
 import A from '../Components/Avengers.json'
+import { thisTypeAnnotation } from '@babel/types';
 export class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isFlipped: false,
       Avengers: [],
-      tempArray: [],
       loaded: false,
       count: 0,
       id: [],
-      name: []
+      //name: [],
+      //target: []
     }
   }
 
   componentDidMount() {
-    //let i;
-    /*for(i=0;i< A;i++){
-    }
-    let clone = A.slice(0)
-    let newArray = A.concat(clone);*/
     let randomArray = this.shuffle(A)
-    //console.log('Avengers: ', newArray)
-    //await this.setStateAsync({ipAddress: ip})
     this.setState({ Avengers: randomArray }, () => {
       this.setState({ loaded: true })
-      //console.log('avengers: ', this.state.Avengers)
     })
   }
-  /*setStateAsync(state) {
-    return new Promise((resolve) => {
-      this.setState(state, resolve)
-    });
-  }*/
 
   shuffle = (arr) => {
     var i,
@@ -51,51 +39,73 @@ export class Dashboard extends Component {
     }
     return arr;
   };
-
-  handleFrontClick = (evt, avenger) => {
-    console.log('avenger: ', avenger)
-    console.log('avenger name: ', avenger.name)
-    console.log('A: ', A)
-    let i;
-
-    //this.setState({ myArray: [...this.state.myArray, 'new value'] }
-    //if count less than one, first element, just store it to compare later
-    if (this.state.count < 1) {
-      
-      this.setState({
-        count: this.state.count + 1,
-        tempArray: [avenger]
-      }, () => {
-        console.log('count less than 1 state temp: ', this.state.tempArray)
-        
-      })
-    /** if count equal one array has two items, compare them. if match,
-     * highlight cards and disable clicking them. if no match found,
-     * call remoteFrontClick with tempArray and close both cards
-     */
-    } else if (this.state.count === 1) {
-     
-      this.setState((prevState) => ({
-        count: prevState.count + 1,
-        tempArray: prevState.tempArray.concat(avenger)
-      }), () => {
-        console.log('count equal 1 state temp: ', this.state.tempArray)
-        if(this.state.tempArray[0].name === this.state.tempArray[1].name){
-          console.log('match')
-        }else{
-          this.remoteFrontClick(this.state.tempArray)
-        }
-
-      })
-    }
+  incrementCounter = () => {
+    this.setState((prevState) => ({ count: prevState.count + 1 },
+      () => {
+        console.log('count: ', this.state.count)
+      }));
   }
 
-  remoteFrontClick = (arr) => {
-    console.log('id array: ', arr)
-    //console.log('id array first: ', arr[0])
+  handleFrontClick = (evt) => {
+    let myId;    
+    let i;
+    for(i=0; i<= this.state.Avengers.length -1;i++){
+      if(this.state.Avengers[i].id === parseInt(evt.target.id)){
+        console.log('found name: ', this.state.Avengers[i].name)
+        console.log('found id: ', this.state.Avengers[i].id)
+        myId = this.state.Avengers[i].id
+        this.setState(prevState => ({
+          id: [...prevState.id, myId ],
+          count: prevState.count + 1 
+        }), () => {
+          if(this.state.id.length >1){
+            console.log('id array to compare: ', this.state.id[0])
+            console.log('id array to compare: ', this.state.id[1])
+            if(this.state.id[0] === this.state.id[1]){
+              console.log('match found')
+            }else{
+              console.log ('no match found')
+            }
 
-    document.getElementById(arr[0].id).click();
-    document.getElementById(arr[1].id).click();
+
+          }
+          
+        })
+      }   
+   }
+  
+  
+ }
+
+  remoteFrontClick = () => {
+    console.log('check count in remote click: ', this.state.count)
+    console.log('id array in remote click: ', this.state.id)
+    /*if(this.state.count > 2){
+      return;
+    }else{ 
+      document.getElementById(this.state.target[0]).click();
+      document.getElementById(this.state.target[1]).click();
+      this.setState({
+        count: 0,
+      }, () => {
+        this.setState({
+         
+         })
+      })
+
+    }
+   
+
+    /*document.getElementById(this.state.target[0]).click();
+    document.getElementById(this.state.target[1]).click();
+    this.setState({
+      count: 0,
+    }, () => {
+      this.setState({
+        target: [],
+        tempArray: []
+       })
+    })*/
   }
   render() {
     let cardsArray = [];
@@ -114,7 +124,8 @@ export class Dashboard extends Component {
               levitate={false}
             >
               <div className='card root '>
-                <img id={avenger.id} onClick={(evt) => this.handleFrontClick(evt, avenger)} className='card-image' src={img1} />
+                {/**id={avenger.id} */}
+                <img id={avenger.id} onClick={(evt) => this.handleFrontClick(evt)} className='card-image' src={img1} />
               </div>
               <div id="myBackFlip" className='card root'>
                 <img className='card-image' src={avenger.url} />
