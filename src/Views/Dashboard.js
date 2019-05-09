@@ -98,9 +98,12 @@ export class Dashboard extends Component {
     if (this.state.count === 2) {
       console.log('index: ', this.state.index)
       if (this.state.Avengers[firstIndex].name === this.state.Avengers[secondIndex].name) {
-        //console.log('state id array: ', this.state.id)
-        //console.log('count: ', this.state.count)
         console.log('match found')
+        this.setState({
+          id: [],
+          index: [],
+          count: 0
+        })
       } else {
         document.getElementById(this.state.id[0]).click();
         document.getElementById(this.state.id[1]).click();
