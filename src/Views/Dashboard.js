@@ -15,6 +15,7 @@ export class Dashboard extends Component {
       loaded: false,
       count: 0,
       id: [],
+      index: []
       //name: [],
       //target: []
     }
@@ -50,16 +51,19 @@ export class Dashboard extends Component {
 
   handleFrontClick = (evt) => {
     let myId;
+    let myIndex;
     let i;
     for (i = 0; i <= this.state.Avengers.length - 1; i++) {
       if (this.state.Avengers[i].id === parseInt(evt.target.id)) {
         //console.log('found name: ', this.state.Avengers[i].name)
         //console.log('found id: ', this.state.Avengers[i].id)
         myId = this.state.Avengers[i].id
+        myIndex = i
       }
     }//end for loop
     this.setState(prevState => ({
       id: [...prevState.id, myId],
+      index: [...prevState.index, myIndex],
       count: prevState.count + 1
     }), () => {
       //console.log('callback click count: ', this.state.count)
@@ -88,20 +92,21 @@ export class Dashboard extends Component {
 
 
   remoteFrontClick = () => {
-    let firstId = this.state.id[0]
-    let secondId = this.state.id[1]
-    
-    if (this.state.count === 2) {
+    let firstIndex = this.state.index[0]
+    let secondIndex = this.state.index[1]
 
-      if (this.state.id[0] === this.state.id[1]) {
-        console.log('state id array: ', this.state.id)
-        console.log('count: ', this.state.count)
+    if (this.state.count === 2) {
+      console.log('index: ', this.state.index)
+      if (this.state.Avengers[firstIndex].name === this.state.Avengers[secondIndex].name) {
+        //console.log('state id array: ', this.state.id)
+        //console.log('count: ', this.state.count)
         console.log('match found')
       } else {
         document.getElementById(this.state.id[0]).click();
         document.getElementById(this.state.id[1]).click();
         this.setState({
           id: [],
+          index: [],
           count: 0
         })
       }
