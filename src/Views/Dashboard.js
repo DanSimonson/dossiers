@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Dashboard.css'
 import Footer from '../Components/Footer/Footer'
+import soundfile from '../applause.mp3'
 import { Link } from 'react-router-dom'
 import ReactCardFlip from 'react-card-flip';
 import ReactCardFlipper from "react-card-flipper";
@@ -10,7 +11,8 @@ import A from '../Components/Avengers.json'
 import Modal from '../Components/Modal/Modal';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Flip from 'react-reveal/Flip';
-import { AnimateOnChange, HideUntilLoaded   } from 'react-animation'
+import { AnimateOnChange, HideUntilLoaded } from 'react-animation'
+import Sound from 'react-sound';
 
 
 export class Dashboard extends Component {
@@ -22,13 +24,11 @@ export class Dashboard extends Component {
       loaded: false,
       count: 0,
       id: [],
-      rememberMe:[],
       index: [],
       showModal: false,
       foundMatch: 0
     }
   }
-
 
   componentDidMount() {
     let randomArray = this.shuffle(A)
@@ -69,7 +69,6 @@ export class Dashboard extends Component {
       }
     }//end for loop
     this.setState(prevState => ({
-      rememberMe: [...prevState.id, myId],
       id: [...prevState.id, myId],
       index: [...prevState.index, myIndex],
       count: prevState.count + 1
@@ -110,7 +109,7 @@ export class Dashboard extends Component {
       }
     }
   }
-  
+
   modalHandler = () => {
     this.setState({
       ...this.state,
@@ -118,7 +117,7 @@ export class Dashboard extends Component {
     });
   }
   startOver = () => {
-    window.location.reload();    
+    window.location.reload();
   }
 
   render() {
@@ -146,59 +145,67 @@ export class Dashboard extends Component {
         )
       });
     }
-   //<AnimateOnChange animationIn="popIn" animationOut="popOut">...</AnimateOnChange>
+  
     return (
       <div>
-
-        <div className='wrapper'> 
-        <div className="box-top">
-        <HideUntilLoaded
-        animationIn="bounceIn"      
-        > 
-         Match The Memory
+        <div className='wrapper'>
+          <div className="box-top">
+            <HideUntilLoaded
+              animationIn="bounceIn"
+            >
+              Match The Memory
          </HideUntilLoaded>
-         
-        </div>
-        <div className="box-bottom">
-        <HideUntilLoaded
-        animationIn="slideIn"
-        >
-         Marvel Avenger's Match Game 
+
+          </div>
+          <div className="box-bottom">
+            <HideUntilLoaded
+              animationIn="slideIn"
+            >
+              Marvel Avenger's Match Game
         </HideUntilLoaded>
-                
-        </div>
-        <div className='button-div'>
-        <button onClick={this.startOver} className='custom-button'>Start Over <i className="fa fa-refresh"></i>
-        </button>
-        <Link to='/'>
-        <button className='custom-button'>Home <i className="fa fa-home"></i>
-        </button>
-        </Link>
-        </div>
+
+          </div>
+          <div className='button-div'>
+            <button onClick={this.startOver} className='custom-button'>Start Over <i className="fa fa-refresh"></i>
+            </button>
+            <Link to='/'>
+              <button className='custom-button'>Home <i className="fa fa-home"></i>
+              </button>
+            </Link>
+          </div>
         </div>
         <HideUntilLoaded
-        animationIn="bounceIn"      
-        > 
-        <div className='wrap-cards'>
-        <div className='grid-container'>         
-        <div className='cards'>
-          {cardsArray}
-        </div>      
-        </div>
-        </div>
-        </HideUntilLoaded> 
-        
-        {this.state.showModal &&
-        <Modal
-          onClose={this.modalHandler}
-          title="Congratulations"
+          animationIn="bounceIn"
         >
-        you have won the match game        
-        </Modal>          
+          <div className='wrap-cards'>
+            <div className='grid-container'>
+              <div className='cards'>
+                {cardsArray}
+              </div>
+            </div>
+          </div>
+        </HideUntilLoaded>
+
+        {this.state.showModal &&
+          <div> 
+          <Modal
+            onClose={this.modalHandler}
+            title="Congratulations"
+          >
+            you have won the match game
+          </Modal>
+           <Sound
+           url={soundfile}
+           playStatus={Sound.status.PLAYING}
+           onLoading={this.handleSongLoading}
+           onPlaying={this.handleSongPlaying}
+           onFinishedPlaying={this.handleSongFinishedPlaying}
+         />
+         </div>
         }
-        <div className='wrapFooter'> 
-        <Footer/> 
-        </div>     
+        <div className='wrapFooter'>
+          <Footer />
+        </div>
       </div>
     )
   }
