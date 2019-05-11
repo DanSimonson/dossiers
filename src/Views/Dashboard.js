@@ -118,8 +118,7 @@ export class Dashboard extends Component {
     });
   }
   startOver = () => {
-    //window.location.reload(); 
-    this.props.history.push('/dashboard')  
+    window.location.reload();    
   }
 
   render() {
