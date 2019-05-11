@@ -65,7 +65,7 @@ transition: .5s;
 	font-family: 'Peralta', cursive;
 	border-radius:4%;
 	padding:10px;
-	margin: 10px;	
+	margin: 5px;	
   background: -moz-linear-gradient(top, #f2825b 0%, #e55b2b 70%, #f07146 79%); 
   background: -webkit-linear-gradient(top, #f2825b 0%,#e55b2b 70%,#f07146 79%); 
   background: linear-gradient(to bottom, #f2825b 0%,#e55b2b 70%,#f07146 79%); 
