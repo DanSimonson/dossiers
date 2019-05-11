@@ -9,6 +9,7 @@
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-animation": "^1.0.9",
     "react-animations": "^1.0.0",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-card-flip": "^0.7.1",

@@ -7,8 +7,10 @@ import butterfly from '../Images/butterfly.jpg'
 import A from '../Components/Avengers.json'
 import Modal from '../Components/Modal/Modal';
 import Backdrop from '../Components/Backdrop/Backdrop';
-//import { createTracing } from 'trace_events';
-//import { thisTypeAnnotation } from '@babel/types';
+import Flip from 'react-reveal/Flip';
+import { AnimateOnChange } from 'react-animation'
+
+
 export class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -24,23 +26,15 @@ export class Dashboard extends Component {
     }
   }
 
+
   componentDidMount() {
     let randomArray = this.shuffle(A)
     this.setState({ Avengers: randomArray }, () => {
       this.setState({ loaded: true })
     })
+
+    document.body.classList.add('orangeClass');
   }
-  /*startCreateEventHandler = () => {
-    this.setState({ creating: true });
-  };
-
-  modalConfirmHandler = () => {
-    this.setState({ creating: false });
-  };
-
-  modalCancelHandler = () => {
-    this.setState({ creating: false });
-  };*/
 
   shuffle = (arr) => {
     var i,
@@ -76,7 +70,6 @@ export class Dashboard extends Component {
       index: [...prevState.index, myIndex],
       count: prevState.count + 1
     }), () => {
-      //let myVar = setTimeout(this.remoteFrontClick, 3000)
       let myVar = setTimeout(() => this.remoteFrontClick(), 3000)
     })
     //let myVar = setTimeout(() => this.remoteFrontClick(), 3000)
@@ -99,10 +92,7 @@ export class Dashboard extends Component {
           foundMatch: this.state.foundMatch + 1
         }, () => {
           if (this.state.foundMatch === 5) {
-            //alert('found all matches') 
-            //this.setState({ showModal: !this.state.showModal })
-            console.log('foundMatch: ', this.state.foundMatch)
-            this.modalHandler()
+            let myModal = setTimeout(() => this.modalHandler(), 1000)
           }
 
         })
@@ -140,7 +130,6 @@ export class Dashboard extends Component {
               levitate={false}
             >
               <div className='card root '>
-                {/**id={avenger.id} */}
                 <img id={avenger.id} onClick={(evt) => this.handleFrontClick(evt)} className='card-image' src={img1} />
               </div>
               <div id="myBackFlip" className='card root'>
@@ -162,12 +151,18 @@ export class Dashboard extends Component {
         </div> 
         {this.state.showModal &&
         <Modal
-        onClose={this.modalHandler}
-        title="Congratulations"
+          onClose={this.modalHandler}
+          title="Congratulations"
         >
-        you have won the match game
-        </Modal>        
+        you have won the match game        
+        </Modal>          
         }
+        <div class="box-top">
+        Match The Memory
+        </div>
+        <div class="box-bottom">
+        Marvel Avenger's Match Game
+        </div>        
       </div>
     )
   }
