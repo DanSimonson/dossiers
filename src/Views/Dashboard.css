@@ -1,3 +1,95 @@
-h1{
-  color:red;
+@import url('https://fonts.googleapis.com/css?family=Peralta');
+* {
+  box-sizing: border-box;
+}
+.bodyClass{
+	background:green;
+}
+.wrapper{
+	margin-bottom:10px;
+}
+.wrap-cards{
+	width:100vw;
+	display:flex;
+	justify-content: center;
+	/*border: 5px solid red;*/
+}
+.grid-container{
+	width: 35vw;
+	display:flex;
+	/*justify-content: center;
+	flex-wrap: wrap;
+	border: 5px solid black*/
+}
+.cards{
+	border: "5px solid #ccc";
+	border-radius: "8px";
+	padding: "10px"; 
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;	
+}
+
+.card-image{
+	border-radius: 2px;
+	width: 100px;
+	height: 150px;
+}
+.custom-button{
+	font-family: 'Peralta', cursive;
+	color:white;
+	background: -moz-linear-gradient(top, #f2825b 0%, #e55b2b 70%, #f07146 79%); 
+background: -webkit-linear-gradient(top, #f2825b 0%,#e55b2b 70%,#f07146 79%); 
+background: linear-gradient(to bottom, #f2825b 0%,#e55b2b 70%,#f07146 79%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2825b', endColorstr='#f07146',GradientType=0 );
+padding: 12px 18px;
+text-align: center;
+font-size: 16px;
+margin: 4px 2px;
+opacity: 0.9;
+transition: .5s;
+}
+.custom-button:hover{
+	color: #f07146;
+	background:white;
+}
+
+.box-top { 
+	display:flex;
+	justify-content: center;
+	align-items: center;  
+  height: 100px;
+	width: 370px;
+	color: white;
+	Font-size: 32px;
+	font-family: 'Peralta', cursive;
+	border-radius:4%;
+	padding:5px;
+	margin: 5px;
+	
+	
+background: -moz-linear-gradient(top, #f2825b 0%, #e55b2b 70%, #f07146 79%); 
+background: -webkit-linear-gradient(top, #f2825b 0%,#e55b2b 70%,#f07146 79%); 
+background: linear-gradient(to bottom, #f2825b 0%,#e55b2b 70%,#f07146 79%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2825b', endColorstr='#f07146',GradientType=0 );       
+}
+.wrapper{
+	width:100vw;
+}
+.box-bottom {
+	display:flex;	
+	justify-content: center;
+	align-items: center;	        
+  height: 100px;
+	width: 370px;
+	color: orange;
+	Font-size: 20px;
+	font-family: 'Peralta', cursive;	
+}
+.wrapFooter{
+	margin-top:6rem;
+}
+/*media queries*/
+/**everything over*/
+@media (max-width: 768px) {
 }

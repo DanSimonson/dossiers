@@ -3,7 +3,7 @@
   justify-content: center;
   color: #111;
   font-size: 32px;
-  font-family: PT Sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Peralta', cursive;
   font-weight: 200;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
@@ -11,7 +11,7 @@
   color: #111;  
 }
 .foot a:hover{
-  color: #777;
+  color: orangered;
   text-decoration: none;
 }
 .modal {
