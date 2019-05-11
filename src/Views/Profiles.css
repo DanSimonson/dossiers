@@ -194,6 +194,11 @@ h3, h2{
   color: #777;
   text-decoration: none;
 }
+.myButton-wrapper{
+  display:flex;
+  justify-content: center;
+  margin: 1rem 0
+}
 .myButton {
 	-moz-box-shadow: 3px 4px 0px 0px #8a2a21;
 	-webkit-box-shadow: 3px 4px 0px 0px #8a2a21;

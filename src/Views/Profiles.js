@@ -121,11 +121,19 @@ export class Profiles extends Component {
     return (
       <div>
         {this.state.openHeader &&
+         <div> 
           <div className="header">
             <div className='title'>
               <p>Marvel's Avengers </p>
             </div>
+            
           </div>
+          <div className='myButton-wrapper'> 
+            <Link to='/dashboard'>
+              <a style={{color:'#fff'}} class="myButton">Ready To Play   Avenger's Match Game</a>
+            </Link>
+          </div>
+      </div>
         }
         {this.state.loaded && !this.state.change ?
           this.state.documents.map((document, index) =>
