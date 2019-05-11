@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './Dashboard.css'
+import Footer from '../Components/Footer/Footer'
+import { Link } from 'react-router-dom'
 import ReactCardFlip from 'react-card-flip';
 import ReactCardFlipper from "react-card-flipper";
 import img1 from '../img1.jpg'
@@ -8,7 +10,7 @@ import A from '../Components/Avengers.json'
 import Modal from '../Components/Modal/Modal';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Flip from 'react-reveal/Flip';
-import { AnimateOnChange } from 'react-animation'
+import { AnimateOnChange, HideUntilLoaded   } from 'react-animation'
 
 
 export class Dashboard extends Component {
@@ -20,6 +22,7 @@ export class Dashboard extends Component {
       loaded: false,
       count: 0,
       id: [],
+      rememberMe:[],
       index: [],
       showModal: false,
       foundMatch: 0
@@ -33,7 +36,7 @@ export class Dashboard extends Component {
       this.setState({ loaded: true })
     })
 
-    document.body.classList.add('orangeClass');
+    //document.body.classList.add('bodyClass');
   }
 
   shuffle = (arr) => {
@@ -66,13 +69,13 @@ export class Dashboard extends Component {
       }
     }//end for loop
     this.setState(prevState => ({
+      rememberMe: [...prevState.id, myId],
       id: [...prevState.id, myId],
       index: [...prevState.index, myIndex],
       count: prevState.count + 1
     }), () => {
       let myVar = setTimeout(() => this.remoteFrontClick(), 3000)
     })
-    //let myVar = setTimeout(() => this.remoteFrontClick(), 3000)
   }
 
 
@@ -114,6 +117,10 @@ export class Dashboard extends Component {
       showModal: !this.state.showModal
     });
   }
+  startOver = () => {
+    window.location.reload();
+    
+  }
 
   render() {
     let cardsArray = [];
@@ -137,18 +144,51 @@ export class Dashboard extends Component {
               </div>
             </ReactCardFlipper>
           </div>
-
         )
       });
     }
-
+   //<AnimateOnChange animationIn="popIn" animationOut="popOut">...</AnimateOnChange>
     return (
       <div>
-        <div className='grid-container'>
-          <div className='cards'>
-            {cardsArray}
-          </div>
-        </div> 
+
+        <div className='wrapper'> 
+        <div className="box-top">
+        <HideUntilLoaded
+        animationIn="bounceIn"      
+        > 
+         Match The Memory
+         </HideUntilLoaded>
+         
+        </div>
+        <div className="box-bottom">
+        <HideUntilLoaded
+        animationIn="slideIn"
+        >
+         Marvel Avenger's Match Game 
+        </HideUntilLoaded>
+                
+        </div>
+        <div className='button-div'>
+        <button onClick={this.startOver} className='custom-button'>Start Over <i className="fa fa-refresh"></i>
+        </button>
+        <Link to='/'>
+        <button className='custom-button'>Home <i className="fa fa-home"></i>
+        </button>
+        </Link>
+        </div>
+        </div>
+        <HideUntilLoaded
+        animationIn="bounceIn"      
+        > 
+        <div className='wrap-cards'>
+        <div className='grid-container'>         
+        <div className='cards'>
+          {cardsArray}
+        </div>      
+        </div>
+        </div>
+        </HideUntilLoaded> 
+        
         {this.state.showModal &&
         <Modal
           onClose={this.modalHandler}
@@ -157,12 +197,9 @@ export class Dashboard extends Component {
         you have won the match game        
         </Modal>          
         }
-        <div class="box-top">
-        Match The Memory
-        </div>
-        <div class="box-bottom">
-        Marvel Avenger's Match Game
-        </div>        
+        <div className='wrapFooter'> 
+        <Footer/> 
+        </div>     
       </div>
     )
   }

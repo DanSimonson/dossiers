@@ -148,7 +148,6 @@ export class Profiles extends Component {
                 <p>
                   <span>Citizenship: {document.citizenship}</span>
                 </p>
-                {/**onClick={() => this.changeView(document)} */}
                 <button onClick={() => this.changeView(document)} className="butn">Intelligence Dossier: Top Secret Clearance Required</button>
               </div>
             </div>

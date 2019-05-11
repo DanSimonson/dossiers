@@ -22,16 +22,16 @@ const Modal = posed.div({
 export class Footer extends Component { 
   constructor(props) {
     super(props)
-    this.state = {
+    /*this.state = {
       isVisible: false
-    }
+    }*/
   } 
   
   render(){
     return (      
       <div className='foot'>               
          <footer>
-         <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a>.</p>
+         <p>&copy;2019 <a href="https://mariposaweb.net" target="_blank">@mariposaweb.net</a></p>
          </footer>
         </div>         
       )
